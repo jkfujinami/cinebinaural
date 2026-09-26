@@ -28,6 +28,17 @@ stereo music ──(optional) AI upmix──┐
 - **Output**: no limiter (attacks are never rounded). The level is set so the peak stays at or below −1 dBFS.
 - **Speaker visualizer**: renders a video of the virtual room showing which speaker is playing and how loud (ripples).
 
+## Listen (headphones)
+
+A 60 s excerpt (2:00–3:00) of a freely distributed track, loudness-matched (−16 LUFS) and not limited:
+
+| | file |
+|---|---|
+| original stereo | [`samples/inmu_king_original.flac`](samples/inmu_king_original.flac) |
+| **cinebinaural** (upmix `--center repan --ambience ls --surround-decorr --surround-delay-ms 10`, then `--preset standard4`) | [`samples/inmu_king_cinebinaural.flac`](samples/inmu_king_cinebinaural.flac) |
+
+Track: "INMU KING" by やじゅまん (album *INMU KING / YAJU-MC*), distributed by the creator for free use. Source: https://www.youtube.com/watch?v=MFwtpM21wWc
+
 ## Quick start
 
 ```bash

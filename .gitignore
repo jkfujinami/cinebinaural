@@ -16,3 +16,6 @@ D2_HRIR_SOFA/
 __pycache__/
 *_work/
 .DS_Store
+# ...except the listening samples (redistributable)
+!samples/
+!samples/*.flac
