@@ -1,0 +1,18 @@
+# Copyrighted audio and generated files are never committed
+data/
+out/
+*.wav
+*.w64
+*.flac
+*.m4a
+*.mp3
+*.mp4
+*.mkv
+*.npz
+*.npy
+# HRTF files: download them from each provider (see README)
+*.sofa
+D2_HRIR_SOFA/
+__pycache__/
+*_work/
+.DS_Store
