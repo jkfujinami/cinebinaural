@@ -210,6 +210,7 @@ def main(argv=None):
     pz.add_argument("out_mp4")
     pz.add_argument("--view", type=float, nargs=2, default=(35.0, 90.0), metavar=("ELEV", "AZIM"),
                     help="カメラの仰角・方位角(90 = 後ろから)")
+    pz.add_argument("--lang", default="ja", choices=["ja", "en"], help="画面の文字の言語")
     pz.add_argument("--style", default="ripple", choices=["ripple", "rays"], help="ripple=波紋 / rays=大きさと線")
     _render_args(pz)
     pv = sub.add_parser("variants", help="比較用バリアント一式を LUFS 揃えで書き出す")
@@ -243,7 +244,7 @@ def main(argv=None):
                             stems_cache=a.stems_cache)
     elif a.cmd == "video":
         from .visualize import render_video
-        render_video(a.input_wav, a.binaural_wav, a.out_mp4, _cfg(a), view=tuple(a.view), style=a.style)
+        render_video(a.input_wav, a.binaural_wav, a.out_mp4, _cfg(a), view=tuple(a.view), style=a.style, lang=a.lang)
     elif a.cmd == "variants":
         os.makedirs(a.out_dir, exist_ok=True)
         for tag, over in VARIANTS.items():

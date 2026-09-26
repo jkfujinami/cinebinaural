@@ -19,3 +19,4 @@ __pycache__/
 # ...except the listening samples (redistributable)
 !samples/
 !samples/*.flac
+!samples/*.mp4

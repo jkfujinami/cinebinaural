@@ -110,12 +110,17 @@ def _draw_room(ax):
 
 
 def render_video(input_5p1, binaural_wav, out_mp4, cfg=None, fps=FPS, size=(1280, 720), view=(35, 90),
-                 verbose=True, preview_frame=None, style="ripple"):
+                 verbose=True, preview_frame=None, style="ripple", lang="ja"):
     """
     style: "ripple" = 各スピーカーから線の円が波紋のように広がる(音が大きいほど遠くまで・濃く)/
            "rays" = スピーカーの大きさと聴く位置への線の濃さで示す(最初の版)。
     preview_frame を渡すと、そのフレームだけを out_mp4(.png)に保存して終わる(見た目の確認用)。
+    lang: 画面の文字 "ja" / "en"
     """
+    T = {"ja": dict(seat="聴く位置", meter="dBFS(スピーカーへの信号)",
+                    room="仮想劇場 {W:g}×{D:g}×{H:g} m / サラウンドは左右の壁のアレイ(各 {n} 本)"),
+         "en": dict(seat="listener", meter="dBFS (speaker feed)",
+                    room="Virtual theater {W:g}×{D:g}×{H:g} m / surround arrays on side walls ({n} per side)")}[lang]
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -143,7 +148,7 @@ def render_video(input_5p1, binaural_wav, out_mp4, cfg=None, fps=FPS, size=(1280
     ax.set_axis_off()
     _draw_room(ax)
     ax.scatter(*Lp, s=90, c="#ffffff", marker="o", depthshade=False)
-    ax.text(Lp[0], Lp[1] + 1.2, Lp[2] - 1.5, "聴く位置", color="#ffffff", fontsize=9, ha="center")
+    ax.text(Lp[0], Lp[1] + 1.2, Lp[2] - 1.5, T["seat"], color="#ffffff", fontsize=9, ha="center")
     for name, ps in pos.items():
         p = ps[0] if len(ps) == 1 else ps[len(ps) // 2]
         off = (0, 1.3, 1.6) if name != "SUB" else (0, 1.3, -1.3)
@@ -189,12 +194,12 @@ def render_video(input_5p1, binaural_wav, out_mp4, cfg=None, fps=FPS, size=(1280
     axm.invert_yaxis()
     axm.set_xlim(DB_FLOOR, 0)
     axm.set_xticks([-60, -40, -20, 0], ["-60", "-40", "-20", "0"], color="#90a4ae", fontsize=8)
-    axm.set_xlabel("dBFS(スピーカーへの信号)", color="#90a4ae", fontsize=8)
+    axm.set_xlabel(T["meter"], color="#90a4ae", fontsize=8)
     for s in axm.spines.values():
         s.set_color("#3a3f4b")
     axm.tick_params(colors="#90a4ae")
     title = fig.text(0.02, 0.95, "", color="#eceff1", fontsize=12)
-    fig.text(0.02, 0.91, f"仮想劇場 {W:g}×{D:g}×{H:g} m / サラウンドは左右の壁のアレイ(各 {C.SURROUND_ARRAY_N} 本)",
+    fig.text(0.02, 0.91, T["room"].format(W=W, D=D, H=H, n=C.SURROUND_ARRAY_N),
              color="#90a4ae", fontsize=9)
 
     def draw(k):

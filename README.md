@@ -30,6 +30,8 @@ stereo music ──(optional) AI upmix──┐
 
 ## Listen (headphones)
 
+**Video** (speaker ripples in the virtual theater + the cinebinaural audio): [`samples/inmu_king_cinebinaural_ripple.mp4`](samples/inmu_king_cinebinaural_ripple.mp4)
+
 A 60 s excerpt (2:00–3:00) of a freely distributed track, loudness-matched (−16 LUFS) and not limited:
 
 | | file |
@@ -55,7 +57,7 @@ python -m cinebinaural.run process song_5p1.wav song_binaural.wav --preset stand
 python -m cinebinaural.run process movie_5p1.w64 movie.wav --preset standard4 --no-limit --lowmem --work-dir /big/disk/work
 
 # speaker visualization video (ripples)
-python -m cinebinaural.run video movie_5p1.wav out.wav speakers.mp4 --preset standard4 --view 35 90
+python -m cinebinaural.run video movie_5p1.wav out.wav speakers.mp4 --preset standard4 --view 35 90 --lang en
 ```
 
 The input must be 48 kHz. Resample 44.1 kHz material first (e.g. `scipy.signal.resample_poly(x, 160, 147)`).
