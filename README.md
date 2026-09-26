@@ -1,6 +1,5 @@
 
 
-https://github.com/user-attachments/assets/d5100eb5-73fe-4dd1-ab23-f78c568b451b
 
 # cinebinaural
 
@@ -34,7 +33,8 @@ stereo music ──(optional) AI upmix──┐
 
 ## Listen (headphones)
 
-**Video** (speaker ripples in the virtual theater + the cinebinaural audio): [`samples/inmu_king_cinebinaural_ripple.mp4`](samples/inmu_king_cinebinaural_ripple.mp4)
+**Video** (speaker ripples in the virtual theater + the cinebinaural audio): [[`samples/inmu_king_cinebinaural_ripple.mp4`](samples/inmu_king_cinebinaural_ripple.mp4)](https://github.com/user-attachments/assets/d5100eb5-73fe-4dd1-ab23-f78c568b451b
+)
 
 A 60 s excerpt (2:00–3:00) of a freely distributed track, loudness-matched (−16 LUFS) and not limited:
 
